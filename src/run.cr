@@ -14,7 +14,7 @@ module Run
     if ARGV.includes?("-i") || ARGV.includes?("--input")
       i_index = ARGV.index("-i") || ARGV.index("--input")
       if i_index && i_index < ARGV.size - 1
-        input_json_file = File.read(ARGV[i_index + 1])
+        expect_json_file = File.read(ARGV[i_index + 1])
       else
         puts "Argument missing. Usage: hackacrow -i INPUT_FILE"
       end
