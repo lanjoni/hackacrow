@@ -15,6 +15,7 @@ module Hackacrow
     puts "Options:"
     puts "  -h, --help        Display this help menu"
     puts "  -c, --check       Check the output of a command"
+    puts "  -e, --expect FILE Specifies the JSON expect file"
     puts "  -i, --input FILE  Specifies the JSON input file"
     puts "  -o, --output FILE Specifies the JSON output file"
   end

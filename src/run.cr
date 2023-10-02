@@ -9,7 +9,18 @@ module Run
   end
 
   def self.load_expect_data
-    JSON.parse(File.read(DEFAULT_EXPECT_JSON_PATH))
+    expect_json_file = File.read(DEFAULT_EXPECT_JSON_PATH)
+
+    if ARGV.includes?("-e") || ARGV.includes?("--expect")
+      e_index = ARGV.index("-e") || ARGV.index("--expect")
+      if e_index && e_index < ARGV.size - 1
+        expect_json_file = File.read(ARGV[e_index + 1])
+      else
+        puts "Argument missing. Usage: hackacrow -e EXPECT_FILE"
+      end
+    end
+
+    JSON.parse(expect_json_file)
   end
 
   def self.run_test(exercise_index : Int, file_name : String)
