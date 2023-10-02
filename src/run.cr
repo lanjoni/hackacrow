@@ -11,12 +11,12 @@ module Run
   def self.load_expect_data
     expect_json_file = File.read(DEFAULT_EXPECT_JSON_PATH)
 
-    if ARGV.includes?("-e") || ARGV.includes?("--expect")
-      e_index = ARGV.index("-e") || ARGV.index("--expect")
-      if e_index && e_index < ARGV.size - 1
-        expect_json_file = File.read(ARGV[e_index + 1])
+    if ARGV.includes?("-i") || ARGV.includes?("--input")
+      i_index = ARGV.index("-i") || ARGV.index("--input")
+      if i_index && i_index < ARGV.size - 1
+        input_json_file = File.read(ARGV[i_index + 1])
       else
-        puts "Argument missing. Usage: hackacrow -e EXPECT_FILE"
+        puts "Argument missing. Usage: hackacrow -i INPUT_FILE"
       end
     end
 
