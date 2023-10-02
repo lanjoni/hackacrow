@@ -1,0 +1,105 @@
+[
+  {
+    "": "Hello World!"
+  },
+  {
+    "2": "8",
+    "4": "64",
+    "8": "512",
+    "16": "4096",
+    "32": "32768",
+    "64": "262144",
+    "128": "2097152"
+  },
+  {
+    "abacaxi": "false",
+    "banana": "false",
+    "rAcEcAR": "true",
+    "arara": "true",
+    "casa": "false",
+    "cachorro": "false",
+    "papepap": "true",
+    "demogorgon": "false"
+  },
+  {
+    "1": "1",
+    "10": "1010",
+    "12": "1100",
+    "14": "1110",
+    "20": "10100",
+    "30": "11110",
+    "40": "101000",
+    "50": "110010",
+    "60": "111100",
+    "70": "1000110"
+  },
+  {
+    "1000; 10; 1": "1100",
+    "1000; 10; 2": "1210",
+    "2000; 5; 2": "2205",
+    "4000; 10; 1": "4400",
+    "4000; 10; 2": "4840",
+    "4000; 10; 3": "5324.0"
+  },
+  {
+    "abacaxi": "aaabcix",
+    "banana": "aaabnn",
+    "rAcEcAR": "aaccerr",
+    "arara": "aaarr",
+    "casa": "aacs",
+    "cachorro": "acchoorr",
+    "papepap": "aaepppp",
+    "demogorgon": "deggmnooor"
+  },
+  {
+    "1": "false",
+    "2": "true",
+    "3": "true",
+    "4": "false",
+    "5": "true",
+    "6": "false",
+    "7": "true",
+    "8": "false",
+    "9": "false",
+    "10": "false",
+    "11": "true",
+    "929": "true"
+  },
+  {
+    "200": "06:40",
+    "300": "10:00",
+    "320": "10:40",
+    "10": "00:20",
+    "50": "01:40",
+    "100": "03:20",
+    "130": "04:20",
+    "150": "05:00"
+  },
+  {
+    "abacaxi": ["ab", "ac", "ax", "i$"],
+    "banana": ["ba", "na", "na"],
+    "alecrim": ["al", "ec", "ri", "m$"],
+    "arara": ["ar", "ar", "a$"],
+    "casa": ["ca", "sa"],
+    "cachorro": ["ca", "ch", "or", "ro"],
+    "demogorgon": ["de", "mo", "go", "rg", "on"],
+    "almosso": ["al", "mo", "ss", "o$"]
+  },
+  {
+    "['Daniel', 'Guto']": "Daniel e Guto curtiram isso",
+    "['Daniel', 'Guto', 'Cherry']": "Daniel, Guto e Cherry curtiram isso",
+    "['Daniel', 'Guto', 'Cherry', 'Yaya']": "Daniel, Guto e outras 2 pessoas curtiram isso",
+    "['Daniel', 'Guto', 'Cherry', 'Yaya', 'Nadachi']": "Daniel, Guto e outras 3 pessoas curtiram isso",
+    "['Daniel', 'Guto', 'Cherry', 'Yaya', 'Nadachi', 'Kalane']": "Daniel, Guto e outras 4 pessoas curtiram isso",
+    "['Daniel', 'Guto', 'Cherry', 'Yaya', 'Nadachi', 'Kalane', 'Gustavo']": "Daniel, Guto e outras 5 pessoas curtiram isso"
+  },
+  {
+    "3841": "3814",
+    "111": "-1",
+    "1234": "-1",
+    "2981": "2918",
+    "1000": "-1",
+    "9999": "-1",
+    "6142": "6124"
+  }
+]

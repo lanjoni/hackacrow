@@ -1,0 +1,13 @@
+name: hackacrow
+version: 0.1.0
+
+authors:
+  - João Augusto Lissoni Lanjoni <joaoaugustolanjoni@gmail.com>
+
+targets:
+  hackacrow:
+    main: src/main.cr
+
+crystal: 1.9.2
+
+license: MIT
