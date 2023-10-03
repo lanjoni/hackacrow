@@ -23,7 +23,7 @@ module Run
     JSON.parse(expect_json_file)
   end
 
-  def self.run_test(exercise_index : Int, file_name : String)
+  def self.run_test(exercise_index : Int, file_name : String, run_with_stdin = true)
     lang_data = load_lang_data
     expect_data = load_expect_data
 
@@ -35,7 +35,12 @@ module Run
         command = "#{lang_data[file_extension]} #{file_name}"
 
         exercise.as_h.each do |key, value|
-          command_output = `echo #{key} | #{command}`.strip
+          if run_with_stdin
+            command_output = `echo #{key} | #{command}`.strip
+          else
+            command_output = `#{command} #{key}`.strip
+          end
+
           output_lines = command_output.split("\n")
           last_line = output_lines.last
           if last_line == value
