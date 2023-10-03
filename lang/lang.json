@@ -1,5 +1,6 @@
 {
   "cr": "crystal run",
+  "lisp": "ros -Q",
   "rb": "ruby",
   "py": "python3",
   "js": "node",
