@@ -79,25 +79,24 @@ describe Run do
   describe "Run test" do
     it "should get a error message when not support file extension", tags: "fast" do
       stdout = IO::Memory.new
-      result = Run.run_test(0, "0.error_language", stdout)
+      result = Run.run_test(0, "0.error_language", stdout: stdout)
 
       stdout.to_s.should match(/Unsupported file extension/)
     end
 
     it "should get a error message when not found exercise", tags: "fast" do
       stdout = IO::Memory.new
-      result = Run.run_test(9999, "9999.cr", stdout)
+      result = Run.run_test(9999, "9999.cr", stdout: stdout)
 
       stdout.to_s.should match(/Exercise not found: \d+/)
     end
-
 
     it "should get correct feedback for success/failed test case", tags: "slow" do
       ARGV.push("-i")
       ARGV.push(temp_file_input.path)
 
       stdout = IO::Memory.new
-      result = Run.run_test(1, "samples/1.cr", stdout)
+      result = Run.run_test(1, "samples/1.cr", stdout: stdout)
 
       stdout.to_s.should match(/Successful test for .+ \(/)
       stdout.to_s.should match(/Test failed for .+ \(/)
