@@ -32,8 +32,11 @@ module Run
       file_extension = File.extname(file_name).sub(".", "")
       
       if lang_data.as_h.has_key?(file_extension)
-        command = "#{lang_data[file_extension]} #{file_name}"
-
+        if (file_extension == "c")
+          command = "cc -Wall -Wextra -Werror #{file_name} -L/usr/local/lib -I/usr/local/include -lreadline && ./a.out #{file_name}"
+        else
+          command = "#{lang_data[file_extension]} #{file_name}"
+        end
         exercise.as_h.each do |key, value|
           if run_with_stdin
             command_output = `echo #{key} | #{command}`.strip
