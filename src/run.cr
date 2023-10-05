@@ -23,13 +23,6 @@ module Run
     JSON.parse(expect_json_file)
   end
 
-  def self.get_command(initial_command : JSON::Any, file_name : String) : String
-    initial_command = initial_command.to_s
-
-    return initial_command.sub("$", file_name) if initial_command.includes?("$")
-    return "#{initial_command} #{file_name}"
-  end
-
   def self.run_test(exercise_index : Int, file_name : String, run_with_stdin = true)
     lang_data = load_lang_data
     expect_data = load_expect_data
@@ -39,7 +32,7 @@ module Run
       file_extension = File.extname(file_name).sub(".", "")
 
       if lang_data.as_h.has_key?(file_extension)
-        command = get_command(lang_data[file_extension], file_name)
+        command = "#{lang_data[file_extension]} #{file_name}"
 
         exercise.as_h.each do |key, value|
           if run_with_stdin
