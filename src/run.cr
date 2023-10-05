@@ -33,7 +33,7 @@ module Run
       
       if lang_data.as_h.has_key?(file_extension)
         if (file_extension == "c")
-          command = "cc -Wall -Wextra -Werror #{file_name} -L/usr/local/lib -I/usr/local/include -lreadline && ./a.out #{file_name}"
+          command = "cc -Wall -Wextra -Werror #{file_name} && ./a.out #{file_name}"
         else
           command = "#{lang_data[file_extension]} #{file_name}"
         end
