@@ -25,10 +25,8 @@ module Run
 
   def self.get_command(initial_command : JSON::Any, file_name : String) : String
     initial_command = initial_command.to_s
-    if initial_command.includes?("$")
-      return initial_command.sub("$", file_name)
-    end
 
+    return initial_command.sub("$", file_name) if initial_command.includes?("$")
     return "#{initial_command} #{file_name}"
   end
 
