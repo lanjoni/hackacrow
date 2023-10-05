@@ -10,14 +10,15 @@ module Hackacrow
   end
 
   def self.display_help
-    puts "\n"
-    puts "Usage: hackacrow [OPTIONS]"
-    puts "Options:"
-    puts "  -h, --help        Display this help menu"
-    puts "  -c, --check       Check the output of a command"
-    puts "  -a, --argument    Instead of using stdin to test, use args"
-    puts "  -i, --input FILE  Specifies the JSON input file"
-    puts "  -o, --output FILE Specifies the JSON output file"
+    puts <<-HELP
+    Usage: hackacrow [OPTIONS]
+    Options:
+      -h, --help        Display this help menu
+      -c, --check       Check the output of a command
+      -a, --argument    Instead of using stdin to test, use args
+      -i, --input FILE  Specifies the JSON input file
+      -o, --output FILE Specifies the JSON output file
+    HELP
   end
 
   def self.main
