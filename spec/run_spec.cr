@@ -76,15 +76,15 @@ describe Run do
   end
 
 
-  describe "Run test", tags: "slow" do
-    it "should get a error message when not support file extension" do
+  describe "Run test" do
+    it "should get a error message when not support file extension", tags: "fast" do
       stdout = IO::Memory.new
       result = Run.run_test(0, "0.error_language", stdout)
 
       stdout.to_s.should match(/Unsupported file extension/)
     end
 
-    it "should get a error message when not found exercise" do
+    it "should get a error message when not found exercise", tags: "fast" do
       stdout = IO::Memory.new
       result = Run.run_test(9999, "9999.cr", stdout)
 
@@ -92,7 +92,7 @@ describe Run do
     end
 
 
-    it "should get correct feedback for success/failed test case" do
+    it "should get correct feedback for success/failed test case", tags: "slow" do
       ARGV.push("-i")
       ARGV.push(temp_file_input.path)
 
