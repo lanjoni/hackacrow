@@ -30,7 +30,7 @@ module Run
     if exercise_index >= 0 && exercise_index < expect_data.size
       exercise = expect_data[exercise_index]
       file_extension = File.extname(file_name).sub(".", "")
-      
+
       if lang_data.as_h.has_key?(file_extension)
         command = "#{lang_data[file_extension]} #{file_name}"
 
