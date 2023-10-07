@@ -54,8 +54,12 @@ module Run
           else
             puts "❌ Test failed for #{file_name} (Exercise #{exercise_index} - Input #{key} - Expected #{value} - Got #{last_line})"
           end
-          if run_with_verbose
-            puts "#{command} #{key}"
+          if run_with_verbose && !run_with_stdin
+            puts "\"#{command} #{key}\""
+          else 
+            if run_with_verbose && run_with_stdin
+              puts "\"echo #{key} | #{command}\""
+            end
           end
         end
       else
