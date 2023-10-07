@@ -16,6 +16,7 @@ module Hackacrow
     puts "  -h, --help        Display this help menu"
     puts "  -c, --check       Check the output of a command"
     puts "  -a, --argument    Instead of using stdin to test, use args"
+    puts "  -v, --verbose   Display the input of a command"
     puts "  -i, --input FILE  Specifies the JSON input file"
     puts "  -o, --output FILE Specifies the JSON output file"
   end
@@ -27,12 +28,13 @@ module Hackacrow
     elsif ARGV.includes?("-c") || ARGV.includes?("--check")
       c_index = ARGV.index("-c") || ARGV.index("--check")
       a_index = ARGV.index("-a") || ARGV.index("--argument")
+      v_index = ARGV.index("-v")  || ARGV.index("--verbose")
 
       if c_index && c_index < ARGV.size - 1
         exercise_index = ARGV[c_index + 1].to_i
         file_name = ARGV.last
 
-        Run.run_test(exercise_index, file_name, a_index == nil)
+        Run.run_test(exercise_index, file_name, a_index == nil, v_index != nil)
       else
         puts "Argument missing. Usage: hackacrow -c EXERCISE_INDEX FILE_NAME"
       end
