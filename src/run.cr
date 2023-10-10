@@ -30,7 +30,7 @@ module Run
     return "#{initial_command} #{file_name}"
   end
 
-  def self.run_test(exercise_index : Int, file_name : String, run_with_stdin = true, run_with_verbose = true)
+  def self.run_test(exercise_index : Int, file_name : String, run_with_stdin = true, run_with_verbose = false)
     lang_data = load_lang_data
     expect_data = load_expect_data
 
