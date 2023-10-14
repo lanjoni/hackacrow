@@ -1,5 +1,6 @@
 require "json"
 require "./run"
+require "./docker"
 
 # TODO: Write documentation for `Hackacrow`
 module Hackacrow
@@ -17,6 +18,7 @@ module Hackacrow
     puts "  -c, --check       Check the output of a command"
     puts "  -i, --input FILE  Specifies the JSON input file"
     puts "  -o, --output FILE Specifies the JSON output file"
+    puts "  -d, --docker IMAGE Specifies the docker image to run"
   end
 
   def self.main
@@ -30,7 +32,19 @@ module Hackacrow
         exercise_index = ARGV[c_index + 1].to_i
         file_name = ARGV.last
 
-        Run.run_test(exercise_index, file_name)
+        if ARGV.includes?("-d") || ARGV.includes?("--docker")
+          d_index = ARGV.index("-d") || ARGV.index("--docker")
+          if d_index && d_index < ARGV.size - 1
+            image = ARGV[d_index + 1]
+            id = Docker.new(image)
+            
+            Run.run_docker(id, exercise_index, file_name)
+          else
+            puts "Argument missing. Usage: hackacrow -d IMAGE"
+          end
+        else
+          Run.run_test(exercise_index, file_name)
+        end
       else
         puts "Argument missing. Usage: hackacrow -c EXERCISE_INDEX FILE_NAME"
       end
