@@ -1,5 +1,6 @@
 require "json"
 require "./run"
+require "./docker"
 
 # TODO: Write documentation for `Hackacrow`
 module Hackacrow
@@ -13,12 +14,13 @@ module Hackacrow
     stdout.puts "\n"
     stdout.puts "Usage: hackacrow [OPTIONS]"
     stdout.puts "Options:"
-    stdout.puts "  -h, --help        Display this help menu"
-    stdout.puts "  -c, --check       Check the output of a command"
-    stdout.puts "  -a, --argument    Instead of using stdin to test, use args"
-    stdout.puts "  -v, --verbose     Display the input of a command"
-    stdout.puts "  -i, --input FILE  Specifies the JSON input file"
-    stdout.puts "  -o, --output FILE Specifies the JSON output file"
+    stdout.puts "  -h, --help         Display this help menu"
+    stdout.puts "  -c, --check        Check the output of a command"
+    stdout.puts "  -a, --argument     Instead of using stdin to test, use args"
+    stdout.puts "  -v, --verbose      Display the input of a command"
+    stdout.puts "  -d, --docker IMAGE Display the input of a command"
+    stdout.puts "  -i, --input FILE   Specifies the JSON input file"
+    stdout.puts "  -o, --output FILE  Specifies the JSON output file"
   end
 
   def self.main(stdout : IO = STDOUT)
@@ -34,7 +36,19 @@ module Hackacrow
         exercise_index = ARGV[c_index + 1].to_i
         file_name = ARGV.last
 
-        Run.run_test(exercise_index, file_name, a_index == nil, v_index != nil)
+        if ARGV.includes?("-d") || ARGV.includes?("--docker")
+          d_index = ARGV.index("-d") || ARGV.index("--docker")
+          if d_index && d_index < ARGV.size - 1
+            image = ARGV[d_index + 1]
+            id = Docker.new(image)
+            
+            Run.run_docker(id, exercise_index, file_name, a_index == nil, v_index != nil)
+          else
+            stdout.puts "Argument missing. Usage: hackacrow -d IMAGE"
+          end
+        else
+          Run.run_test(exercise_index, file_name, a_index == nil, v_index != nil)
+        end
       else
         stdout.puts "Argument missing. Usage: hackacrow -c EXERCISE_INDEX FILE_NAME"
       end

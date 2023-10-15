@@ -69,4 +69,32 @@ module Run
       stdout.puts "Exercise not found: #{exercise_index}"
     end
   end
+
+  def self.run_docker(id, exercise_index : Int, file_name : String, run_with_stdin = true, run_with_verbose = false)
+    lang_data = load_lang_data
+    expect_data = load_expect_data
+
+    if exercise_index >= 0 && exercise_index < expect_data.size
+      exercise = expect_data[exercise_index]
+      file_extension = File.extname(file_name).sub(".", "")
+      
+      if lang_data.as_h.has_key?(file_extension)
+        command = "bash scripts/docker.sh --run #{id} #{file_name} #{lang_data[file_extension]}"
+        exercise.as_h.each do |key, value|
+          command_output = `echo #{key} | #{command}`.strip
+          output_lines = command_output.split("\n")
+          last_line = output_lines.last
+          if last_line == value
+            puts "✅ Successful test for #{file_name} (Exercise #{exercise_index} - Input #{key} - Expected #{value} - Got #{last_line})"
+          else
+            puts "❌ Test failed for #{file_name} (Exercise #{exercise_index} - Input #{key} - Expected #{value} - Got #{last_line})"
+          end
+        end
+      else
+        puts "Unsupported file extension: #{file_extension}"
+      end
+    else
+      puts "Exercise not found: #{exercise_index}"
+    end
+  end
 end
