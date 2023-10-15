@@ -80,8 +80,6 @@ module Run
       
       if lang_data.as_h.has_key?(file_extension)
         command = "bash scripts/docker.sh --run #{id} #{file_name} #{lang_data[file_extension]}"
-        puts command
-
         exercise.as_h.each do |key, value|
           command_output = `echo #{key} | #{command}`.strip
           output_lines = command_output.split("\n")
