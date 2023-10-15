@@ -42,7 +42,7 @@ module Hackacrow
             image = ARGV[d_index + 1]
             id = Docker.new(image)
             
-            Run.run_docker(id, exercise_index, file_name)
+            Run.run_docker(id, exercise_index, file_name, a_index == nil, v_index != nil)
           else
             stdout.puts "Argument missing. Usage: hackacrow -d IMAGE"
           end
