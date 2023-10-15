@@ -44,7 +44,7 @@ module Hackacrow
             
             Run.run_docker(id, exercise_index, file_name)
           else
-            puts "Argument missing. Usage: hackacrow -d IMAGE"
+            stdout.puts "Argument missing. Usage: hackacrow -d IMAGE"
           end
         else
           Run.run_test(exercise_index, file_name, a_index == nil, v_index != nil)
