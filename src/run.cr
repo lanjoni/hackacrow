@@ -70,7 +70,7 @@ module Run
     end
   end
 
-  def self.run_docker(id, exercise_index : Int, file_name : String)
+  def self.run_docker(id, exercise_index : Int, file_name : String, run_with_stdin = true, run_with_verbose = false)
     lang_data = load_lang_data
     expect_data = load_expect_data
 
